@@ -14,4 +14,4 @@
   pip:
     name: "certbot-{{ item }}=={{ certbot_pip_version }}"
   loop: "{{ certbot_plugins }}"
-  when: certbot_plugins
+  when: certbot_plugins is defined
