@@ -17,10 +17,10 @@
     update_cache: yes
     default_release: stretch-backports
   loop: "{{ certbot_plugins }}"
-  when: certbot_plugins
+  when: certbot_plugins is defined
 
 - name: certbot | Debian | Install certbot package
   apt:
     name: certbot
     update_cache: yes
-  when: not certbot_plugins
+  when: certbot_plugins is undefined
