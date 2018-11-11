@@ -12,6 +12,8 @@ env:
     - ROLE_NAME: certbot
   matrix:
     - MOLECULE_DISTRO: debian:stretch
+    - MOLECULE_DISTRO: debian:stretch
+      MOLECULE_PLAYBOOK: pip_route53_playbook.yml
     - MOLECULE_DISTRO: centos:7
     - MOLECULE_DISTRO: ubuntu:trusty
     - MOLECULE_DISTRO: ubuntu:xenial
