@@ -1,6 +1,9 @@
 ---
 - name: Converge
   hosts: all
+  pre_tasks:
+    - name: install pip
+      package: name=python-pip
   roles:
     - role: ericsysmin.epel
     - role: ericsysmin.certbot
