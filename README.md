@@ -1,48 +1,48 @@
-Role Name
-=========
+# certbot
 
-A brief description of the role goes here.
+Installs certbot on Debian, Ubuntu, RHEL, CentOS, and using pip if needed.
 
-Requirements
-------------
+## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should
-be mentioned here. For instance, if the role uses the EC2 module, it may be a
-good idea to mention in this section that the boto package is required.
+### RHEL/CentOS:
+  - EPEL
 
-Role Variables
---------------
+### Pypi aka pip
+  - python-pip
 
-A description of the settable variables for this role should go here, including
-any variables that are in defaults/main.yml, vars/main.yml, and any variables
-that can/should be set via parameters to the role. Any variables that are read
-from other roles and/or the global scope (ie. hostvars, group vars, etc.) should
-be mentioned here as well.
+## Role Variables
+| Variable | Required | Default | Options | Comments |
+|----------|----------|---------|---------|----------|
+| `certbot_pkg_mgr` | No | {{ ansible_pkg_mgr }} | `apt`, `yum`, `pip` | The package manager used to install certbot |
+| `certbot_pip_version` | No | 0.27.1 | Any Valid Version | The version of the certbot pip packages |
+| `certbot_plugins` | No | `omit` | `apache`, `dns-cloudflare`, `digitalocean`, `dns-dnsimple`, `dns-rfc2136`, `dns-route53`, `nginx` | Specified as a list allows installation of certbot plugins |
 
-Dependencies
-------------
+## Example Playbook
 
-A list of other roles hosted on Galaxy should go here, plus any details in
-regards to parameters that may need to be set for other roles, or variables that
-are used from other roles.
+### Basic Installation
+```
 
-Example Playbook
-----------------
+  - hosts: server
+    roles:
+      - role: certbot
+```   
 
-Including an example of how to use your role (for instance, with variables
-passed in as parameters) is always nice for users too:
+### Installation w/Route53 Plugin
+```
 
-    - hosts: servers
-      roles:
-         - { role: ericsysmin.certbot, x: 42 }
+  - hosts: server
+    roles:
+      - role: certbot
+        certbot_pkg_mgr: pip
+        certbot_plugins:
+          - dns-route53
+```          
 
-License
--------
+## License
 
-BSD
+Apache 2.0
 
-Author Information
-------------------
+## Author Information
 
-An optional section for the role authors to include contact information, or a
-website (HTML is not allowed).
+Eric Anderson  
+Avi Networks

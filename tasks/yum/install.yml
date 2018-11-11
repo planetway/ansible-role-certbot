@@ -1,0 +1,11 @@
+---
+- name: certbot | RHEL | Install certbot plugins
+  yum:
+    name: python2-certbot-{{ item }}
+  loop: "{{ certbot_plugins }}"
+  when: certbot_plugins
+
+- name: certbot | RHEL | Install certbot package
+  yum:
+    name: certbot
+  when: not certbot_plugins

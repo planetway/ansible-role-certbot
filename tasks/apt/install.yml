@@ -1,0 +1,26 @@
+---
+- name: certbot | Debian | Install the Debian Backports repository
+  apt_repository:
+    repo: deb http://ftp.debian.org/debian stretch-backports main
+    update_cache: yes
+  when: ansible_distribution == 'Debian'
+
+- name: certbot | Ubuntu | Install the Ubuntu PPA certbot/certbot
+  apt_repository:
+    repo: ppa:certbot/certbot
+    update_cache: yes
+  when: ansible_distribution == 'Ubuntu'
+
+- name: certbot | Debian | Install certbot plugins python3
+  apt:
+    name: python3-certbot-{{ item }}
+    update_cache: yes
+    default_release: stretch-backports
+  loop: "{{ certbot_plugins }}"
+  when: certbot_plugins
+
+- name: certbot | Debian | Install certbot package
+  apt:
+    name: certbot
+    update_cache: yes
+  when: not certbot_plugins

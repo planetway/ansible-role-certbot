@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  connection: local
+  roles:
+    - role: certbot
+      certbot_pkg_mgr: pip
+      certbot_plugins: ['dns-route53']
