@@ -3,9 +3,9 @@
   yum:
     name: python2-certbot-{{ item }}
   loop: "{{ certbot_plugins }}"
-  when: certbot_plugins
+  when: certbot_plugins is defined
 
 - name: certbot | RHEL | Install certbot package
   yum:
     name: certbot
-  when: not certbot_plugins
+  when: certbot_plugins is undefined
