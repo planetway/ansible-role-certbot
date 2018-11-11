@@ -7,7 +7,7 @@ Installs certbot on Debian, Ubuntu, RHEL, CentOS, and using pip if needed.
 ### RHEL/CentOS:
   - EPEL
 
-### Pypi aka pip
+### Pip (Pypi)
   - python-pip
 
 ## Role Variables
