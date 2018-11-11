@@ -1,15 +1,22 @@
 galaxy_info:
-  author: Eric Anderson
+  author: ericsymsin
+  role_name: certbot
   description: Role to install certbot
   company: Avi Networks
   license: Apache 2.0
   min_ansible_version: 2.4
   platforms:
+    - name: Debian
+      versions:
+        - stretch
     - name: Ubuntu
       versions:
         - precise
         - trusty
         - xenial
         - bionic
+    - name: CentOS
+      versions:
+        - 7
   galaxy_tags: []
 dependencies: []

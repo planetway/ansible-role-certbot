@@ -44,5 +44,4 @@ Apache 2.0
 
 ## Author Information
 
-Eric Anderson  
-Avi Networks
+[ericsysmin](https://ericsysmin.com)
