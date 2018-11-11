@@ -9,7 +9,7 @@ before_install:
 
 env:
   global:
-    - ROLE_NAME: kubectl
+    - ROLE_NAME: certbot
   matrix:
     - MOLECULE_DISTRO: debian:stretch
     - MOLECULE_DISTRO: centos:7
