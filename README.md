@@ -42,7 +42,7 @@ Installs certbot on Debian, Ubuntu, RHEL, CentOS, and using pip if needed.
 
 ## License
 
-Apache 2.0
+MIT
 
 ## Author Information
 
