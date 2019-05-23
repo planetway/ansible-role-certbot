@@ -22,23 +22,23 @@ Installs certbot on Debian, Ubuntu, RHEL, CentOS, and using pip if needed.
 ## Example Playbook
 
 ### Basic Installation
-```
+```yaml
 
-  - hosts: server
-    roles:
-      - role: certbot
-```   
+- hosts: server
+  roles:
+    - role: certbot
+```
 
 ### Installation w/Route53 Plugin
-```
+```yaml
 
-  - hosts: server
-    roles:
-      - role: certbot
-        certbot_pkg_mgr: pip
-        certbot_plugins:
-          - dns-route53
-```          
+- hosts: server
+  roles:
+    - role: certbot
+      certbot_pkg_mgr: pip
+      certbot_plugins:
+        - dns-route53
+```
 
 ## License
 
