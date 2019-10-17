@@ -1,6 +1,6 @@
 ---
 - name: certbot | PyPI | Upgrade pip, setuptools, and pyopenssl as required
-  pip: name={{ item }} state=latest
+  pip: name={{ item }} state=present
   loop:
     - pip
     - setuptools
