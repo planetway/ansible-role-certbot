@@ -6,13 +6,13 @@ Installs certbot on Debian, Ubuntu, RHEL, CentOS, and using pip if needed.
 
 ### RHEL/CentOS
 
-- EPEL
+-   EPEL
 
 ### Pip (Pypi)
 
-- python-pip
-- setuptools
-- pyopenssl
+-   python-pip
+-   setuptools
+-   pyopenssl
 
 ## Role Variables
 
