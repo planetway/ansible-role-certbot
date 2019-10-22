@@ -2,10 +2,18 @@
 - name: certbot | RHEL | Install certbot plugins
   yum:
     name: python2-certbot-{{ item }}
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
   loop: "{{ certbot_plugins }}"
   when: certbot_plugins is defined
 
 - name: certbot | RHEL | Install certbot package
   yum:
     name: certbot
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
   when: certbot_plugins is undefined

@@ -16,6 +16,10 @@
     name: python3-certbot-{{ item }}
     update_cache: yes
     default_release: stretch-backports
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
   loop: "{{ certbot_plugins }}"
   when: certbot_plugins is defined
 
@@ -23,4 +27,8 @@
   apt:
     name: certbot
     update_cache: yes
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
   when: certbot_plugins is undefined
