@@ -3,4 +3,5 @@
   hosts: all
   roles:
     - role: ericsysmin.epel
+    - role: geerlingguy.pip
     - role: ericsysmin.certbot

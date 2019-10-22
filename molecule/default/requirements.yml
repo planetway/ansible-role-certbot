@@ -1,2 +1,3 @@
 ---
 - src: ericsysmin.epel
+- src: geerlingguy.pip
