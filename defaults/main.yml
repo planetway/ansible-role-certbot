@@ -1,5 +1,6 @@
 ---
 # defaults file for certbot
+
 certbot_pkg_mgr: "{{ ansible_pkg_mgr }}"
 certbot_pip_version: 0.27.1
 certbot_pip_executable: pip

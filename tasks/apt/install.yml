@@ -1,34 +1,36 @@
 ---
-- name: certbot | Debian | Install the Debian Backports repository
-  apt_repository:
-    repo: deb http://ftp.debian.org/debian stretch-backports main
-    update_cache: yes
-  when: ansible_distribution == 'Debian'
+- name: certbot | Apt | Debian 9 | Steps
+  block:
+    - name: certbot | Debian | Install the Debian Backports repository
+      apt_repository:
+        repo: deb http://ftp.debian.org/debian stretch-backports main
+        update_cache: yes
+    - name: certbot | Debian | Include Debian 9 vars
+      include_vars: debian-9.yml
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_major_version == '9'
 
-- name: certbot | Ubuntu | Install the Ubuntu PPA certbot/certbot
-  apt_repository:
-    repo: ppa:certbot/certbot
-    update_cache: yes
+- name: certbot | Apt | Ubuntu | Install the Ubuntu PPA certbot/certbot
+  apt_repository: repo=ppa:certbot/certbot codename={{ ansible_distribution_release }}
   when: ansible_distribution == 'Ubuntu'
 
-- name: certbot | Debian | Install certbot plugins python3
+- name: certbot | Apt | Install certbot package
+  apt: name=certbot update_cache=yes
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+  when: certbot_plugins is undefined
+
+- name: certbot | Apt | Install certbot plugins
   apt:
     name: python3-certbot-{{ item }}
     update_cache: yes
-    default_release: stretch-backports
+    default_release: "{{ default_release|default(omit) }}"
   register: task_result
   until: task_result is success
   retries: 10
   delay: 2
   loop: "{{ certbot_plugins }}"
   when: certbot_plugins is defined
-
-- name: certbot | Debian | Install certbot package
-  apt:
-    name: certbot
-    update_cache: yes
-  register: task_result
-  until: task_result is success
-  retries: 10
-  delay: 2
-  when: certbot_plugins is undefined

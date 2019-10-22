@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ericsysmin.epel
+    - role: geerlingguy.pip
+    - role: ericsysmin.certbot
+      certbot_plugins: ['dns-route53']
