@@ -1,3 +1,5 @@
+# THIS REPO IS NO LONGER MAINTAINED - MOVED TO [geerlingguy.certbot](https://github.com/geerlingguy/ansible-role-certbot)
+
 # certbot
 
 Installs certbot on Debian, Ubuntu, RHEL, CentOS, and using pip if needed.
